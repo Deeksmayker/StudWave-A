@@ -8,7 +8,6 @@ public class Main : MonoBehaviour
 {
     [SerializeField] private Text dateTimeText;
 
-    // Start is called before the first frame update
     void Start()
     {
 #if UNITY_ANDROID
@@ -19,9 +18,4 @@ public class Main : MonoBehaviour
 #endif
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //dateTimeText.text = DateTimeInfo.Instance.GetDateTime();
-    }
 }

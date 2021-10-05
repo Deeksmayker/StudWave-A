@@ -9,12 +9,7 @@ public class EventsRepository : MonoBehaviour
         FillRepository();
     }
 
-    public EventsRepository()
-    {
-        Events = new Dictionary<string, List<Event>>();
-    }
-
-    public Dictionary<string, List<Event>> Events { get; }
+    public Dictionary<string, List<Event>> Events { get; } = new Dictionary<string, List<Event>>();
 
     [SerializeField] private TriggerPlaces _places;
 
@@ -27,15 +22,15 @@ public class EventsRepository : MonoBehaviour
     {
         var UNIlist = new List<Event>()
         {
-            new Event("Абоба")
+            new Event("Абоба?")
             {
                 Choices =
                 {
                     new Choice("SDF", "SFDSDF", "EWQR"),
                     new Choice("SDF", "SFDSDF", "EWQR"),
                     new Choice("SDF", "SFDSDF", "EWQR"),
-                    new Choice("SDF", "SFDSDF", "EWQR"),
                     new Choice("SDF", "SFDSDF", "EWQR")
+                    
                 }
             }
         };
