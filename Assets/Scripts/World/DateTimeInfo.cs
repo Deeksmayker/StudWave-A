@@ -2,12 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DateTimeInfo : MonoBehaviour
 {
     [SerializeField] private PlayerStats _player;
 
     public bool IsWentToPairs;
+
+    [SerializeField] private Text _minorDate;
+
+    void Start()
+    {
+        _minorDate.text = GetDateTime();
+    }
 
     #region EnumAndProperties
 
@@ -51,6 +59,7 @@ public class DateTimeInfo : MonoBehaviour
                 Course++;
 
             month = value;
+            _minorDate.text = GetDateTime();
         }
     }
 
@@ -68,6 +77,7 @@ public class DateTimeInfo : MonoBehaviour
             }
 
             week = value;
+            _minorDate.text = GetDateTime();
         }
     }
 
@@ -91,6 +101,7 @@ public class DateTimeInfo : MonoBehaviour
             }
 
             hour = value;
+            _minorDate.text = GetDateTime();
         }
     }
 
@@ -113,6 +124,7 @@ public class DateTimeInfo : MonoBehaviour
             }
 
             minuteF = value;
+            _minorDate.text = GetDateTime();
         }
     }
 

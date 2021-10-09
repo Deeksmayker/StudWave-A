@@ -3,16 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Choice : MonoBehaviour
+public class Choice 
 {
     public Choice(string text, string successText, string failText, Func<bool> successCriteria = null,
-        Action<bool> effectOnPlayer = null)
+        Action<bool> effect = null)
     {
         Text = text;
         SuccessText = successText;
         FailText = failText;
         SuccessCriteria = successCriteria;
-        EffectOnPlayer = effectOnPlayer;
+        Effect = effect;
     }
 
     public string Text { get; }
@@ -20,5 +20,5 @@ public class Choice : MonoBehaviour
     public string FailText { get; }
 
     public Func<bool> SuccessCriteria {get;}
-    public Action<bool> EffectOnPlayer {get;}
+    public Action<bool> Effect {get;}
 }

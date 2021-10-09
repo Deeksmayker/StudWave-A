@@ -5,10 +5,16 @@ using UnityEngine.UI;
 
 public class ButtonsKeeper : MonoBehaviour
 {
-    [SerializeField] private Button[] _buttons;
+    [SerializeField] private Button[] _eventButtons;
+    [SerializeField] private Button[] _placeInteractionButtons;
 
     public Button[] GetEventButtons()
     {
-        return _buttons;
+        return _eventButtons;
+    }
+
+    public Button[] GetPlaceInteractionButtons()
+    {
+        return _placeInteractionButtons;
     }
 }

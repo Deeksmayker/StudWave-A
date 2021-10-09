@@ -1,9 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
+
+    [SerializeField] private Slider _hungerSlider;
+    [SerializeField] private Slider _healthSlider;
+    [SerializeField] private Slider _energySlider;
+    [SerializeField] private Slider _moodSlider;
+    [SerializeField] private Slider _studySlider;
+    [SerializeField] private Text _moneyValue;
+
+    void Start()
+    {
+        _hungerSlider.value = Hunger;
+        _healthSlider.value = Health;
+        _energySlider.value = Energy;
+        _moodSlider.value = Mood;
+        _studySlider.value = Study;
+        _moneyValue.text = Money.ToString();
+    }
+
     #region perks
 
     private int knowledgeXP;
@@ -106,6 +125,7 @@ public class PlayerStats : MonoBehaviour
         set
         {
             hunger = Mathf.Clamp(value, 0, 100);
+            _hungerSlider.value = hunger;
         }
     }
 
@@ -116,6 +136,7 @@ public class PlayerStats : MonoBehaviour
         set
         {
             energy = Mathf.Clamp(value, 0, 100);
+            _energySlider.value = energy;
         }
     }
 
@@ -126,6 +147,7 @@ public class PlayerStats : MonoBehaviour
         set
         {
             health = Mathf.Clamp(value, 0, 100);
+            _healthSlider.value = health;
         }
     }
 
@@ -137,6 +159,7 @@ public class PlayerStats : MonoBehaviour
         set
         {
             study = Mathf.Clamp(value, 0, 100);
+            _studySlider.value = study;
         }
     }
 
@@ -145,7 +168,11 @@ public class PlayerStats : MonoBehaviour
     public int Mood
     {
         get => mood;
-        set => mood = Mathf.Clamp(value, 0, 100);
+        set
+        {
+            mood = Mathf.Clamp(value, 0, 100);
+            _moodSlider.value = mood;
+        }
     }
 
     private int money = 10000;
@@ -153,7 +180,11 @@ public class PlayerStats : MonoBehaviour
     public int Money
     {
         get => money;
-        set => money = value;
+        set
+        {
+            money = value;
+            _moneyValue.text = money.ToString();
+        }
     }
 
     #endregion

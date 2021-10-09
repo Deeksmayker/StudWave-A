@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EventsRepository : MonoBehaviour
 {
+    private TriggerPlaces _places = new TriggerPlaces();
+
     void Start()
     {
         FillRepository();
     }
 
     public Dictionary<string, List<Event>> Events { get; } = new Dictionary<string, List<Event>>();
-
-    [SerializeField] private TriggerPlaces _places;
 
     public Dictionary<string, List<Event>> GetEvents()
     {
