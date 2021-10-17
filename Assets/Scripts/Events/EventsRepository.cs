@@ -1,40 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Quests;
 using UnityEngine;
 
 public class EventsRepository : MonoBehaviour
 {
-    private TriggerPlaces _places = new TriggerPlaces();
+    [SerializeField] private PlayerStats _playerStats;
 
     void Start()
     {
         FillRepository();
     }
 
-    public Dictionary<string, List<Event>> Events { get; } = new Dictionary<string, List<Event>>();
+    private static Dictionary<string, List<Event>> _events = new Dictionary<string, List<Event>>();
 
-    public Dictionary<string, List<Event>> GetEvents()
+    public static Dictionary<string, List<Event>> GetEvents()
     {
-        return Events;
+        return _events;
     }
 
     private void FillRepository()
     {
         var UNIlist = new List<Event>()
         {
-            new Event("�����?")
+            new Event("�����?")
             {
                 Choices =
                 {
-                    new Choice("SDF", "SFDSDF", "EWQR"),
-                    new Choice("SDF", "SFDSDF", "EWQR"),
-                    new Choice("SDF", "SFDSDF", "EWQR"),
-                    new Choice("SDF", "SFDSDF", "EWQR")
-                    
+                    new Choice("SDF", "SFDSDF", "EWQR", () => _playerStats.KnowledgeLevel >= 3, b => _playerStats.Mood += 20),
+                    new Choice("SDF", "SFDSDF", "EWQR", () => _playerStats.KnowledgeLevel >= 3, b => _playerStats.Mood += 20),
+                    new Choice("SDF", "SFDSDF", "EWQR", () => _playerStats.KnowledgeLevel >= 3, b => _playerStats.Mood += 20),
+                    new Choice("SDF", "SFDSDF", "EWQR", () => _playerStats.KnowledgeLevel >= 3, b => _playerStats.Mood += 20),
                 }
             }
         };
 
-        Events.Add(_places.University, UNIlist);
+        var STREETlist = new List<Event>()
+        {
+            new Event("Подбежал на улице чел и попросил отнести справку в вуз")
+            {
+                Choices =
+                {
+                    new Choice("Взять квест", "Квест получен", "", () => true,
+                        b =>
+                        {
+                            StateBus.QuestsTaken += QuestIds.Test1;
+                            QuestsRepository.GetQuestById(QuestIds.Test1).UpdateQuestStatus(Quest.EventStatus.Current);
+                        })
+                }
+            }
+        };
+
+        _events.Add(TriggerPlaces.University, UNIlist);
+        _events.Add(TriggerPlaces.Street, STREETlist);
     }
 }

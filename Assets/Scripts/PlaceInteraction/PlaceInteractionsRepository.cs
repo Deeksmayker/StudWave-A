@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Quests;
 using UnityEngine;
 
 namespace Assets.Scripts.PlaceInteraction
 {
     public class PlaceInteractionsRepository : MonoBehaviour
     {
-        private TriggerPlaces _places = new TriggerPlaces();
         [SerializeField] private DateTimeInfo _dateTimeInfo;
         [SerializeField] private PlayerStats _player;
 
@@ -36,10 +36,14 @@ namespace Assets.Scripts.PlaceInteraction
                         _player.Money -= 500;
                         _player.Hunger += 20;
                     },
-                    "Поел, попил и теперь доволен")
+                    "Поел, попил и теперь доволен"),
+                new Interaction("[КВЕСТ] Отнести бумагулю",
+                    () => QuestsRepository.GetQuestById(QuestIds.Test1).Status == Quest.EventStatus.Current,
+                    () => StateBus.QuestsComplete += QuestIds.Test1,
+                    "Квест выполнен")
             };
 
-            _interactions.Add(_places.University, UNIInteractions);
+            _interactions.Add(TriggerPlaces.University, UNIInteractions);
         }
     }
 }

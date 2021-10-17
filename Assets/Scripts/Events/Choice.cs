@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Choice 
 {
-    public Choice(string text, string successText, string failText, Func<bool> successCriteria = null,
-        Action<bool> effect = null)
+    public Choice(string text, string successText, string failText, Func<bool> successCriteria,
+        Action<bool> effect)
     {
         Text = text;
         SuccessText = successText;

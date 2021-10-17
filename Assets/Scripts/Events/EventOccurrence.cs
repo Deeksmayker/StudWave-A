@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EventOccurrence : MonoBehaviour
 {
     [SerializeField] private GameObject _panel;
-    [SerializeField] private EventsRepository _events;
+    [SerializeField] private GameObject _intermediatePanel;
     [SerializeField] private string _key;
 
     [SerializeField] private ButtonsKeeper _buttonsKeeper;
@@ -22,15 +22,28 @@ public class EventOccurrence : MonoBehaviour
 
         _panel.GetComponentInChildren<Text>().text = currentEvent.Text;
 
+
         for (var i = 0; i < currentEvent.Choices.Count; i++)
         {
-            buttons[i].GetComponentInChildren<Text>().text = currentEvent.Choices[i].Text;
-            buttons[i].gameObject.SetActive(true);
+            var currentButton = buttons[i];
+            var choice = currentEvent.Choices[i];
+            
+            currentButton.onClick.AddListener(() =>
+            {
+                choice.Effect(choice.SuccessCriteria());
+                _intermediatePanel.GetComponentInChildren<Text>().text =
+                    choice.SuccessCriteria() ? choice.SuccessText : choice.FailText;
+                _panel.gameObject.SetActive(false);
+                _intermediatePanel.gameObject.SetActive(true);
+            });
+
+            currentButton.GetComponentInChildren<Text>().text = choice.Text;
+            currentButton.gameObject.SetActive(true);
         }
     }
 
     private Event GetEventByKey(string key)
     {
-        return _events.GetEvents()[_key][0];
+        return EventsRepository.GetEvents()[_key][0];
     }
 }
