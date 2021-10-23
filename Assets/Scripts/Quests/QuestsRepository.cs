@@ -21,8 +21,12 @@ namespace Assets.Scripts.Quests
         {
             var test1 = new Quest("Отнести бумагулю", "Нужно отнести бумагулю в уник", QuestIds.Test1,
                 () => StateBus.QuestsComplete == QuestIds.Test1, () => _playerStats.Mood += 20);
+            var test2 = new Quest("Помоги бабульке", "Нужно помочь бабульке на улице", QuestIds.Test2,
+                () => StateBus.QuestsComplete == QuestIds.Test2, () => _playerStats.Health += 30);
+            test1.SetNextQuest(test2);
 
             _questsDictionary.Add(QuestIds.Test1, test1);
+            _questsDictionary.Add(QuestIds.Test2, test2);
         }
 
         public static Quest GetQuestById(string id)

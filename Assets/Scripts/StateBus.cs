@@ -9,6 +9,8 @@ public static class StateBus
 {
     #region Custom states and events
 
+    public static string CurrentPlaceKey;
+    public static bool IsInPlaceInteractions;
     public static StateQueue<string> PlaceTrigger;
     public static StateQueue<string> QuestsComplete;
     public static StateQueue<string> QuestsTaken;

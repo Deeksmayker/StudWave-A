@@ -7,21 +7,23 @@ public class EventOccurrence : MonoBehaviour
 {
     [SerializeField] private GameObject _panel;
     [SerializeField] private GameObject _intermediatePanel;
-    [SerializeField] private string _key;
 
     [SerializeField] private ButtonsKeeper _buttonsKeeper;
 
-    void OnTriggerEnter()
+    public void ShowEventPanel(string key)
     {
-        Debug.Log(_key + " trigger");
-
-        var currentEvent = GetEventByKey(_key);
+        var currentEvent = GetEventByKey(key);
         var buttons = _buttonsKeeper.GetEventButtons();
 
         _panel.SetActive(true);
 
         _panel.GetComponentInChildren<Text>().text = currentEvent.Text;
 
+        foreach (var button in buttons)
+        {
+            button.gameObject.SetActive(false);
+            button.onClick.RemoveAllListeners();
+        }
 
         for (var i = 0; i < currentEvent.Choices.Count; i++)
         {
@@ -44,6 +46,12 @@ public class EventOccurrence : MonoBehaviour
 
     private Event GetEventByKey(string key)
     {
-        return EventsRepository.GetEvents()[_key][0];
+        foreach (var e in EventsRepository.GetEvents()[key])
+        {
+            if (e.AppearanceCriteria())
+                return e;
+        }
+
+        return new Event("Евенты не нашлись, ливай", () => true);
     }
 }

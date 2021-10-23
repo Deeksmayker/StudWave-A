@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.PlaceInteraction;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,15 +12,22 @@ public class PlaceInteractionOccurrence : MonoBehaviour
     [SerializeField] private PlaceInteractionsRepository _interactions;
     [SerializeField] private ButtonsKeeper _buttonKeeper;
 
-    public void SetPanelButtons(string key)
+    public void ShowPlaceInteractions()
     {
+        StateBus.IsInPlaceInteractions = true;
         var buttons = _buttonKeeper.GetPlaceInteractionButtons();
-        var currentPlaceInteractions = _interactions.GetInteractionsByKey(key);
+        var currentPlaceInteractions = _interactions.GetInteractionsByKey(StateBus.CurrentPlaceKey);
 
         _panel.SetActive(true);
 
         var currentButtonIndex = 0;
-        
+
+        foreach (var button in buttons)
+        {
+            button.gameObject.SetActive(false);
+            button.onClick.RemoveAllListeners();
+        }
+
         for (var i = 0; i < currentPlaceInteractions.Count; i++)
         {
             if (currentButtonIndex == buttons.Length)

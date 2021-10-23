@@ -23,7 +23,7 @@ public class EventsRepository : MonoBehaviour
     {
         var UNIlist = new List<Event>()
         {
-            new Event("�����?")
+            new Event("�����?", () => true)
             {
                 Choices =
                 {
@@ -37,7 +37,8 @@ public class EventsRepository : MonoBehaviour
 
         var STREETlist = new List<Event>()
         {
-            new Event("Подбежал на улице чел и попросил отнести справку в вуз")
+            new Event("Подбежал на улице чел и попросил отнести справку в вуз",
+                () => QuestsRepository.GetQuestById(QuestIds.Test1).Status == Quest.EventStatus.Waiting)
             {
                 Choices =
                 {
@@ -45,10 +46,18 @@ public class EventsRepository : MonoBehaviour
                         b =>
                         {
                             StateBus.QuestsTaken += QuestIds.Test1;
-                            QuestsRepository.GetQuestById(QuestIds.Test1).UpdateQuestStatus(Quest.EventStatus.Current);
                         })
                 }
-            }
+            },
+            new Event("Ну ты нашел эту бабку, реально застряла",
+                () => QuestsRepository.GetQuestById(QuestIds.Test2).Status == Quest.EventStatus.Current)
+            {
+                Choices =
+                {
+                    new Choice("Ну пора бы помочь бабабульке", "Красава, бабка спасена от неотвратимости бытия", "",
+                        () => true, b => StateBus.QuestsComplete += QuestIds.Test2)
+                }
+            } 
         };
 
         _events.Add(TriggerPlaces.University, UNIlist);

@@ -40,7 +40,7 @@ namespace Assets.Scripts.PlaceInteraction
                 new Interaction("[КВЕСТ] Отнести бумагулю",
                     () => QuestsRepository.GetQuestById(QuestIds.Test1).Status == Quest.EventStatus.Current,
                     () => StateBus.QuestsComplete += QuestIds.Test1,
-                    "Квест выполнен")
+                    "Квест может и выполнен, но на выходе к тебе подходит старичок и говорит что его бабушка застряла на дороге, иди ка помоги, паря")
             };
 
             _interactions.Add(TriggerPlaces.University, UNIInteractions);

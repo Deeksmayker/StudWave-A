@@ -8,6 +8,12 @@ namespace Assets.Scripts.Quests
 {
     public class Quest
     {
+        public enum EventStatus
+        {
+            Waiting,
+            Current,
+            Done
+        }
 
         public Quest(string name, string description, string id, Func<bool> goal = null, Action effectOnGoalComplete = null)
         {
@@ -17,13 +23,6 @@ namespace Assets.Scripts.Quests
             Goal = goal;
             EffectOnGoalComplete = effectOnGoalComplete;
             Status = EventStatus.Waiting;
-        }
-
-        public enum EventStatus
-        {
-            Waiting,
-            Current,
-            Done
         }
 
         public EventStatus Status { get; private set; }
