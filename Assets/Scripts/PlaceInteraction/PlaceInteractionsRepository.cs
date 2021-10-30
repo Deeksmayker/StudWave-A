@@ -37,6 +37,12 @@ namespace Assets.Scripts.PlaceInteraction
                         _player.Hunger += 20;
                     },
                     "Поел, попил и теперь доволен"),
+
+                new Interaction("[ДЕБАГ] Скипнуть 6 часов",
+                    () => true,
+                    () => _dateTimeInfo.Hour +=6,
+                    "Ты обязательно справишься...."),
+
                 new Interaction("[КВЕСТ] Отнести бумагулю",
                     () => QuestsRepository.GetQuestById(QuestIds.Test1).Status == Quest.EventStatus.Current,
                     () => StateBus.QuestsComplete += QuestIds.Test1,

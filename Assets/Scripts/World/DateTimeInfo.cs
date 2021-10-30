@@ -97,8 +97,10 @@ public class DateTimeInfo : MonoBehaviour
                     _player.Study += 5;
                 else
                     _player.Study -= 10;
-                IsWentToPairs = false;
             }
+
+            if (hour < 8 && value >= 8)
+                StateBus.DayCompleted += true;
 
             hour = value;
             _minorDate.text = GetDateTime();

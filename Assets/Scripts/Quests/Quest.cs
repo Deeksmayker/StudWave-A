@@ -12,14 +12,16 @@ namespace Assets.Scripts.Quests
         {
             Waiting,
             Current,
-            Done
+            Done,
+            Overdue
         }
 
-        public Quest(string name, string description, string id, Func<bool> goal = null, Action effectOnGoalComplete = null)
+        public Quest(string name, string description, string id, int deadlineWeek = 0, Func<bool> goal = null, Action effectOnGoalComplete = null)
         {
             Name = name;
             Description = description;
             Id = id;
+            DeadlineWeek = deadlineWeek;
             Goal = goal;
             EffectOnGoalComplete = effectOnGoalComplete;
             Status = EventStatus.Waiting;
@@ -30,6 +32,7 @@ namespace Assets.Scripts.Quests
         public string Name { get; }
         public string Description { get; }
         public string Id { get; }
+        public int DeadlineWeek { get; }
 
         public Func<bool> Goal { get; }
         public Action EffectOnGoalComplete { get; }

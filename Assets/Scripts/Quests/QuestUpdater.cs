@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,11 +12,14 @@ namespace Assets.Scripts.Quests
     public class QuestUpdater : MonoBehaviour
     {
         [SerializeField] private List<Text> _questTexts;
+        [SerializeField] private DateTimeInfo _dateTimeInfo;
+        [SerializeField] private GameObject _dayEndPanel;
 
         void Update()
         {
             CheckTakenQuests();
             CheckCompletedQuests();
+            CheckDayCompleted();
         }
 
         private void CheckTakenQuests()
@@ -24,14 +28,7 @@ namespace Assets.Scripts.Quests
             {
                 var takenQuest = QuestsRepository.GetQuestById(StateBus.QuestsTaken);
                 takenQuest.UpdateQuestStatus(Quest.EventStatus.Current);
-                foreach (var questText in _questTexts)
-                {
-                    if (questText != null)
-                    {
-                        questText.text = takenQuest.Name;
-                        break;
-                    }
-                }
+                UpdateQuestLog();
             }
         }
 
@@ -44,14 +41,41 @@ namespace Assets.Scripts.Quests
                 completedQuest.EffectOnGoalComplete();
                 if (completedQuest.NextQuest != null)
                     StateBus.QuestsTaken += completedQuest.NextQuest.Id;
-                foreach (var questText in _questTexts)
+                UpdateQuestLog();
+            }
+        }
+
+        private void CheckDayCompleted()
+        {
+            if (StateBus.DayCompleted)
+            {
+                foreach (var quest in QuestsRepository.GetCurrentQuests())
                 {
-                    if (questText.text == QuestsRepository.GetQuestById(StateBus.QuestsComplete).Name)
+                    if (quest.DeadlineWeek == _dateTimeInfo.Week)
                     {
-                        questText.text = "";
-                        break;
+                        quest.UpdateQuestStatus(Quest.EventStatus.Overdue);
                     }
                 }
+                ShowDayEndPanel();
+                UpdateQuestLog();
+            }
+        }
+
+        async void ShowDayEndPanel()
+        {
+            _dayEndPanel.SetActive(true);
+            var sleep = new Task(() => Thread.Sleep(3000));
+            sleep.Start();
+            await sleep;
+            _dayEndPanel.SetActive(false);
+        }
+
+        private void UpdateQuestLog()
+        {
+            var currentQuests = QuestsRepository.GetCurrentQuests();
+            for (var i = 0; i < _questTexts.Count; i++)
+            {
+                _questTexts[i].text = i >= currentQuests.Length ? "" : currentQuests[i].Name;
             }
         }
     }

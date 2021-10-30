@@ -14,6 +14,7 @@ public static class StateBus
     public static StateQueue<string> PlaceTrigger;
     public static StateQueue<string> QuestsComplete;
     public static StateQueue<string> QuestsTaken;
+    public static StateQueue<bool> DayCompleted;
 
     /*
     public static Transform PlayerTransform;

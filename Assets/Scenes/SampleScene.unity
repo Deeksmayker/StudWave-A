@@ -512,6 +512,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2045029641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6380691396470885394, guid: 01e497bc44cb55e4584bb69be1b2899c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6792157388721520070}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2146507011 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6792157389886547141, guid: 01e497bc44cb55e4584bb69be1b2899c,
@@ -1035,6 +1041,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6792157389331029914, guid: 01e497bc44cb55e4584bb69be1b2899c,
+        type: 3}
+      propertyPath: _dayEndPanel
+      value: 
+      objectReference: {fileID: 2045029641}
+    - target: {fileID: 6792157389331029914, guid: 01e497bc44cb55e4584bb69be1b2899c,
+        type: 3}
+      propertyPath: _dateTimeInfo
+      value: 
+      objectReference: {fileID: 420575007}
     - target: {fileID: 6792157389331029917, guid: 01e497bc44cb55e4584bb69be1b2899c,
         type: 3}
       propertyPath: _playerStats
