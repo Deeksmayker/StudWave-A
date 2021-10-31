@@ -44,9 +44,19 @@ namespace Assets.Scripts.PlaceInteraction
                     "Ты обязательно справишься...."),
 
                 new Interaction("[КВЕСТ] Отнести бумагулю",
-                    () => QuestsRepository.GetQuestById(QuestIds.Test1).Status == Quest.EventStatus.Current,
-                    () => StateBus.QuestsComplete += QuestIds.Test1,
-                    "Квест может и выполнен, но на выходе к тебе подходит старичок и говорит что его бабушка застряла на дороге, иди ка помоги, паря")
+                    () => QuestsRepository.GetQuestChainById(QuestChainIds.Test1).GetCurrentQuest()?.Id == QuestIds.PaperCourier,
+                    () => StateBus.QuestComplete += QuestChainIds.Test1,
+                    "Квест может и выполнен, но на выходе к тебе подходит старичок и говорит что его бабушка застряла на дороге, иди ка помоги, паря"),
+
+                new Interaction("[КВЕСТ] Поручение от студсовета",
+                    () => _dateTimeInfo.Month == 9 && _dateTimeInfo.Week == 1 && QuestsRepository.GetQuestChainById(QuestChainIds.Aboba).GetFirstWaitingQuest()?.Id == QuestIds.AskAboba,
+                    () => StateBus.QuestChainTaken += QuestChainIds.Aboba,
+                    "Тебе нужно найти абобу у шарашки и попросить помощи"),
+
+                new Interaction("[КВЕСТ] Сказать условия абобы",
+                    () => QuestsRepository.GetQuestChainById(QuestChainIds.Aboba).GetCurrentQuest()?.Id == QuestIds.TellStudPermission,
+                    () => StateBus.QuestComplete += QuestChainIds.Aboba,
+                    "Ну они согласны с условиями абобы, так что дуй к нему обратно, паря")
             };
 
             _interactions.Add(TriggerPlaces.University, UNIInteractions);

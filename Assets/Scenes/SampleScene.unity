@@ -464,6 +464,18 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 140c0bd1196c1ef498ef722096340ef0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fde4778013810d4081800d5b75eb8d3, type: 3}
+--- !u!114 &1773881469 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4448497881715331759, guid: 2cd862a12bbe39c41ae3625e674d8f3c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4448497882774866103}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47df703329ccb8d4bba46fd454d862a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1790968012 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6792157390235663626, guid: 01e497bc44cb55e4584bb69be1b2899c,
@@ -524,6 +536,100 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6792157388721520070}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1084472315306742123
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1084472314457856960, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472314457856960, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472314457856960, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472314457856960, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472314457856960, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472314457856960, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472314457856960, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472314457856960, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472314457856960, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472314457856960, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472314457856960, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472314457856961, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_Name
+      value: QuestCharacters
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472316046752801, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_Name
+      value: AbobaTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472316046752807, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472316223264889, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_Name
+      value: AbobaTestTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472316223264895, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: _key
+      value: ABOBA
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472316223264895, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: _eventOccurrence
+      value: 
+      objectReference: {fileID: 1773881469}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a4962381400389b44a534978458d3809, type: 3}
 --- !u!1001 &1180112813154793429
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,8 +12,9 @@ public static class StateBus
     public static string CurrentPlaceKey;
     public static bool IsInPlaceInteractions;
     public static StateQueue<string> PlaceTrigger;
-    public static StateQueue<string> QuestsComplete;
-    public static StateQueue<string> QuestsTaken;
+    public static StateQueue<string> QuestComplete;
+    public static StateQueue<string> QuestChainTaken;
+    public static StateQueue<string> QuestChainFailed;
     public static StateQueue<bool> DayCompleted;
 
     /*

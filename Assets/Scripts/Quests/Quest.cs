@@ -13,38 +13,32 @@ namespace Assets.Scripts.Quests
             Waiting,
             Current,
             Done,
-            Overdue
+            Failed
         }
 
-        public Quest(string name, string description, string id, int deadlineWeek = 0, Func<bool> goal = null, Action effectOnGoalComplete = null)
+        public Quest(string name, string description, string id, int deadlineWeek = 0, Action effectOnGoalComplete = null)
         {
             Name = name;
             Description = description;
-            Id = id;
             DeadlineWeek = deadlineWeek;
-            Goal = goal;
+            Id = id;
+            //Goal = goal;
             EffectOnGoalComplete = effectOnGoalComplete;
             Status = EventStatus.Waiting;
         }
 
         public EventStatus Status { get; private set; }
-        public Quest NextQuest { get; private set; }
         public string Name { get; }
-        public string Description { get; }
         public string Id { get; }
+        public string Description { get; }
         public int DeadlineWeek { get; }
 
-        public Func<bool> Goal { get; }
+        //public Func<bool> Goal { get; }
         public Action EffectOnGoalComplete { get; }
 
         public void UpdateQuestStatus(EventStatus updatedStatus)
         {
             Status = updatedStatus;
-        }
-
-        public void SetNextQuest(Quest nextQuest)
-        {
-            NextQuest = nextQuest;
         }
     }
 }
