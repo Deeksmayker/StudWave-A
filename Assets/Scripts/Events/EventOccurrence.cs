@@ -13,6 +13,8 @@ public class EventOccurrence : MonoBehaviour
     public void ShowEventPanel(string key)
     {
         var currentEvent = GetEventByKey(key);
+        if (currentEvent == null)
+            return;
         var buttons = _buttonsKeeper.GetEventButtons();
 
         _panel.SetActive(true);
@@ -52,6 +54,6 @@ public class EventOccurrence : MonoBehaviour
                 return e;
         }
 
-        return new Event("Евенты не нашлись, ливай", () => true);
+        return null;
     }
 }
