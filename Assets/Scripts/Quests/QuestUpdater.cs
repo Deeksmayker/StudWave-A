@@ -20,13 +20,14 @@ namespace Assets.Scripts.Quests
             CheckTakenQuests();
             CheckCompletedQuests();
             CheckDayCompleted();
+            CheckFailedQuests();
         }
 
         private void CheckTakenQuests()
         {
-            if (StateBus.QuestsTaken.Value != null)
+            if (StateBus.QuestChainTaken.Value != null)
             {
-                var takenQuest = QuestsRepository.GetQuestById(StateBus.QuestsTaken);
+                var takenQuest = QuestsRepository.GetQuestChainById(StateBus.QuestChainTaken).GetFirstWaitingQuest();
                 takenQuest.UpdateQuestStatus(Quest.EventStatus.Current);
                 UpdateQuestLog();
             }
@@ -34,13 +35,33 @@ namespace Assets.Scripts.Quests
 
         private void CheckCompletedQuests()
         {
-            if (StateBus.QuestsComplete.Value != null)
+            if (StateBus.QuestComplete.Value != null)
             {
-                var completedQuest = QuestsRepository.GetQuestById(StateBus.QuestsComplete);
+                var currentQuestChain = QuestsRepository.GetQuestChainById(StateBus.QuestComplete);
+
+                var completedQuest = currentQuestChain.GetCurrentQuest();
                 completedQuest.UpdateQuestStatus(Quest.EventStatus.Done);
                 completedQuest.EffectOnGoalComplete();
-                if (completedQuest.NextQuest != null)
-                    StateBus.QuestsTaken += completedQuest.NextQuest.Id;
+
+                currentQuestChain.GetFirstWaitingQuest()?.UpdateQuestStatus(Quest.EventStatus.Current);
+                UpdateQuestLog();
+            }
+        }
+
+        private void CheckFailedQuests()
+        {
+            if (StateBus.QuestChainFailed.Value != null)
+            {
+                var currentQuestChain = QuestsRepository.GetQuestChainById(StateBus.QuestChainFailed);
+
+                var failedQuest = currentQuestChain.GetCurrentQuest();
+                failedQuest.UpdateQuestStatus(Quest.EventStatus.Failed);
+
+                while (currentQuestChain.GetFirstWaitingQuest() != null)
+                {
+                    currentQuestChain.GetFirstWaitingQuest().UpdateQuestStatus(Quest.EventStatus.Failed);
+                }
+
                 UpdateQuestLog();
             }
         }
@@ -53,7 +74,7 @@ namespace Assets.Scripts.Quests
                 {
                     if (quest.DeadlineWeek == _dateTimeInfo.Week)
                     {
-                        quest.UpdateQuestStatus(Quest.EventStatus.Overdue);
+                        quest.UpdateQuestStatus(Quest.EventStatus.Failed);
                     }
                 }
                 ShowDayEndPanel();

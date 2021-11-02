@@ -14,42 +14,67 @@ namespace Assets.Scripts.Quests
             FillRepository();
         }
 
-        private static Dictionary<string, Quest> _questsDictionary = new Dictionary<string, Quest>();
+        private static Dictionary<string, QuestChain> _questChainsDictionary = new Dictionary<string, QuestChain>();
         [SerializeField] private PlayerStats _playerStats;
 
         private void FillRepository()
         {
-            var test1 = new Quest(
-                "Отнести бумагулю",
-                "Нужно отнести бумагулю в уник",
-                QuestIds.Test1,
-                2,
-                () => StateBus.QuestsComplete == QuestIds.Test1,
-                () => _playerStats.Mood += 20);
+            var test1 = new QuestChain(QuestChainIds.Test1, new Quest[]
+            {
+                new Quest(
+                    "Отнести бумагулю",
+                    "Нужно отнести бумагулю в уник",
+                    QuestIds.PaperCourier,
+                    2,
+                  //  () => StateBus.QuestComplete == QuestChainIds.Test1,
+                    () => _playerStats.Mood += 20),
 
-            var test2 = new Quest(
-                "Помоги бабульке",
-                "Нужно помочь бабульке на улице",
-                QuestIds.Test2,
-                2,
-                () => StateBus.QuestsComplete == QuestIds.Test2,
-                () => _playerStats.Health += 30);
+                new Quest(
+                    "Помоги бабульке",
+                    "Нужно помочь бабульке на улице",
+                    QuestIds.HelpBabka,
+                    2,
+                   // () => StateBus.QuestComplete == QuestChainIds.Test2,
+                    () => _playerStats.Health += 30)
+            });
 
-            test1.SetNextQuest(test2);
+            var aboba = new QuestChain(QuestChainIds.Aboba, new Quest[]
+            {
+                new Quest(
+                    "Сходи ка к абобе к шарашке за углом",
+                    "fas",
+                    QuestIds.AskAboba,
+                    2,
+                    () => _playerStats.Mood -= 10),
+                new Quest(
+                    "Дуй ка в студсовет выпрашивать подачки для абобы",
+                    "SD",
+                    QuestIds.TellStudPermission,
+                    2,
+                    () => _playerStats.Mood -= 10),
+                new Quest(
+                    "Обратно к абобе, срочно",
+                    "SD",
+                    QuestIds.ReturnToAboba,
+                    2,
+                    () => _playerStats.Mood += 30)
+            });
+            
 
-            _questsDictionary.Add(QuestIds.Test1, test1);
-            _questsDictionary.Add(QuestIds.Test2, test2);
+            _questChainsDictionary.Add(QuestChainIds.Test1, test1);
+            _questChainsDictionary.Add(QuestChainIds.Aboba, aboba);
         }
 
-        public static Quest GetQuestById(string id)
+        public static QuestChain GetQuestChainById(string id)
         {
-            return _questsDictionary[id];
+            return _questChainsDictionary[id];
         }
 
         public static Quest[] GetCurrentQuests()
         {
-            return _questsDictionary.Values.ToList()
-                .FindAll(q => q.Status == Quest.EventStatus.Current)
+            return _questChainsDictionary.Values.ToList()
+                .FindAll(qc => qc.GetCurrentQuest() != null)
+                .Select(qc => qc.GetCurrentQuest())
                 .ToArray();
         }
     }
