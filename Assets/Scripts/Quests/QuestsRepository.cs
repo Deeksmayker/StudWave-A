@@ -26,7 +26,7 @@ namespace Assets.Scripts.Quests
                     "Нужно отнести бумагулю в уник",
                     QuestIds.PaperCourier,
                     2,
-                  //  () => StateBus.QuestComplete == QuestChainIds.Test1,
+                  //  () => StateBus.QuestCompleted == QuestChainIds.Test1,
                     () => _playerStats.Mood += 20),
 
                 new Quest(
@@ -34,7 +34,7 @@ namespace Assets.Scripts.Quests
                     "Нужно помочь бабульке на улице",
                     QuestIds.HelpBabka,
                     2,
-                   // () => StateBus.QuestComplete == QuestChainIds.Test2,
+                   // () => StateBus.QuestCompleted == QuestChainIds.Test2,
                     () => _playerStats.Health += 30)
             });
 

@@ -56,7 +56,7 @@ public class EventsRepository : MonoBehaviour
                 {
                     new Choice("Ну пора бы помочь бабабульке", "Красава, бабка спасена от неотвратимости бытия", "",
                         () => true,
-                        b => StateBus.QuestComplete += QuestChainIds.Test1)
+                        b => StateBus.QuestCompleted += QuestChainIds.Test1)
                 }
             } 
         };
@@ -73,7 +73,7 @@ public class EventsRepository : MonoBehaviour
                     new Choice("ЛАдно, паря, схожу спрошу как у них с такими жесткими условиями обстоит вопрос",
                         "Ну и иди", "",
                         () => true,
-                        b => StateBus.QuestComplete += QuestChainIds.Aboba),
+                        b => StateBus.QuestCompleted += QuestChainIds.Aboba),
                     new Choice("Ты хуйни то не неси, давай отсюдова, нам такие хуйноносы не нужны", "Э", "",
                         () => true,
                         b => StateBus.QuestChainFailed += QuestChainIds.Aboba)
@@ -89,7 +89,7 @@ public class EventsRepository : MonoBehaviour
                     new Choice("ХОрошие вести, абоба, будет тебе этот адреналин",
                         "Абоба очень рад и присоединяется к вашей хуйне", "",
                         () => true,
-                        b => StateBus.QuestComplete += QuestChainIds.Aboba)
+                        b => StateBus.QuestCompleted += QuestChainIds.Aboba)
                 }
             }
         };

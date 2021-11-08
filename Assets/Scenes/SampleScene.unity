@@ -201,6 +201,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &568695518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1084472314457856961, guid: a4962381400389b44a534978458d3809,
+    type: 3}
+  m_PrefabInstance: {fileID: 1084472315306742123}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &568695520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568695518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7595ca30168c6634594b25c80c860509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &588777591 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6792157389275690417, guid: 01e497bc44cb55e4584bb69be1b2899c,
@@ -607,6 +625,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AbobaTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084472316046752801, guid: a4962381400389b44a534978458d3809,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1084472316046752807, guid: a4962381400389b44a534978458d3809,
         type: 3}
