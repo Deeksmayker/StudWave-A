@@ -35,15 +35,19 @@ namespace Assets.Scripts.Quests
 
         private void CheckCompletedQuests()
         {
-            if (StateBus.QuestComplete.Value != null)
+            if (StateBus.QuestCompleted.Value != null)
             {
-                var currentQuestChain = QuestsRepository.GetQuestChainById(StateBus.QuestComplete);
+                var currentQuestChain = QuestsRepository.GetQuestChainById(StateBus.QuestCompleted);
 
                 var completedQuest = currentQuestChain.GetCurrentQuest();
                 completedQuest.UpdateQuestStatus(Quest.EventStatus.Done);
                 completedQuest.EffectOnGoalComplete();
 
-                currentQuestChain.GetFirstWaitingQuest()?.UpdateQuestStatus(Quest.EventStatus.Current);
+                if (currentQuestChain.GetFirstWaitingQuest() == null)
+                    StateBus.QuestChainCompleted += StateBus.QuestCompleted;
+                else
+                    currentQuestChain.GetFirstWaitingQuest().UpdateQuestStatus(Quest.EventStatus.Current);
+
                 UpdateQuestLog();
             }
         }
