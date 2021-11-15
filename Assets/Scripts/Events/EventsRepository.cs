@@ -6,6 +6,7 @@ using UnityEngine;
 public class EventsRepository : MonoBehaviour
 {
     [SerializeField] private PlayerStats _playerStats;
+    [SerializeField] private StudCouncil _studCouncil;
 
     void Start()
     {
@@ -89,7 +90,11 @@ public class EventsRepository : MonoBehaviour
                     new Choice("ХОрошие вести, абоба, будет тебе этот адреналин",
                         "Абоба очень рад и присоединяется к вашей хуйне", "",
                         () => true,
-                        b => StateBus.QuestCompleted += QuestChainIds.Aboba)
+                        b =>
+                        {
+                            StateBus.QuestCompleted += QuestChainIds.Aboba;
+                            _studCouncil.AddMembersCount();
+                        })
                 }
             }
         };
