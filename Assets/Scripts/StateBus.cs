@@ -11,8 +11,11 @@ public static class StateBus
 
     public static string CurrentPlaceKey;
     public static bool IsInPlaceInteractions;
-    public static StateQueue<string> PlaceTrigger;
-    public static StateQueue<string> QuestComplete;
+    public static string NextEvent = "Неизвестно";
+    public static string NextEventRequirements = "Неизвестно";
+
+    public static StateQueue<string> QuestCompleted;
+    public static StateQueue<string> QuestChainCompleted;
     public static StateQueue<string> QuestChainTaken;
     public static StateQueue<string> QuestChainFailed;
     public static StateQueue<bool> DayCompleted;

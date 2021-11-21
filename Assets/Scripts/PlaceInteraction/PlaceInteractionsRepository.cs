@@ -45,7 +45,7 @@ namespace Assets.Scripts.PlaceInteraction
 
                 new Interaction("[КВЕСТ] Отнести бумагулю",
                     () => QuestsRepository.GetQuestChainById(QuestChainIds.Test1).GetCurrentQuest()?.Id == QuestIds.PaperCourier,
-                    () => StateBus.QuestComplete += QuestChainIds.Test1,
+                    () => StateBus.QuestCompleted += QuestChainIds.Test1,
                     "Квест может и выполнен, но на выходе к тебе подходит старичок и говорит что его бабушка застряла на дороге, иди ка помоги, паря"),
 
                 new Interaction("[КВЕСТ] Поручение от студсовета",
@@ -55,8 +55,13 @@ namespace Assets.Scripts.PlaceInteraction
 
                 new Interaction("[КВЕСТ] Сказать условия абобы",
                     () => QuestsRepository.GetQuestChainById(QuestChainIds.Aboba).GetCurrentQuest()?.Id == QuestIds.TellStudPermission,
-                    () => StateBus.QuestComplete += QuestChainIds.Aboba,
-                    "Ну они согласны с условиями абобы, так что дуй к нему обратно, паря")
+                    () =>
+                    {
+                        StateBus.QuestCompleted += QuestChainIds.Aboba;
+                        StateBus.NextEvent += "Сбор пекусов в начале октября";
+                        StateBus.NextEventRequirements += "Влияние: 3 \n Участников: 3";
+                    },
+                    "Ну они согласны с условиями абобы, так что дуй к нему обратно, паря. Также тебе сказали что следующий большоу эвент будет........ Сбор пекусов. Надо бы подготовиться.")
             };
 
             _interactions.Add(TriggerPlaces.University, UNIInteractions);

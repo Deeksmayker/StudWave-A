@@ -20,6 +20,9 @@ public class PlayerWalking : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        //Обычная скорость.
+        //agent.speed = 75;
+        agent.speed = 500;
         confirmPanelText = confirmPanel.GetComponentInChildren<Text>();
     }
 
