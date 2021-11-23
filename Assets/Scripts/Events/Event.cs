@@ -17,9 +17,4 @@ public class Event
     public List<Choice> Choices { get; private set; }
 
     public Func<bool> AppearanceCriteria { get; private set; }
-
-    public void AddChoice(Choice choice)
-    {
-        Choices.Add(choice);
-    }
 }

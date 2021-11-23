@@ -43,7 +43,8 @@ public class PlaceInteractionOccurrence : MonoBehaviour
                     _intermediatePanel.GetComponentInChildren<Text>().text =
                         interaction.TextAfterChoice;
                     _panel.gameObject.SetActive(false);
-                    _intermediatePanel.gameObject.SetActive(true);
+                    if (interaction.NeedIntermediatePanel)
+                        _intermediatePanel.gameObject.SetActive(true);
                 });
                 buttons[currentButtonIndex].GetComponentInChildren<Text>().text = currentPlaceInteractions[i].Text;
                 buttons[currentButtonIndex].gameObject.SetActive(true);

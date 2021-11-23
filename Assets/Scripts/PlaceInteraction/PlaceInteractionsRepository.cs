@@ -10,6 +10,9 @@ namespace Assets.Scripts.PlaceInteraction
 {
     public class PlaceInteractionsRepository : MonoBehaviour
     {
+        [SerializeField] private StudCouncilPanelContent _studCouncil;
+        [SerializeField] private EventOccurrence _eventOccurrence;
+
         [SerializeField] private DateTimeInfo _dateTimeInfo;
         [SerializeField] private PlayerStats _player;
 
@@ -29,6 +32,18 @@ namespace Assets.Scripts.PlaceInteraction
         {
             var UNIInteractions = new List<Interaction>()
             {
+                new Interaction("Студсовет",
+                    () => true,
+                    () => _studCouncil.ShowStudPanelContent(),
+                    "",
+                    false),
+
+                new Interaction("На пары",
+                    () => true,
+                    () => _eventOccurrence.ShowEventPanel(TriggerPlaces.University),
+                    "",
+                    false),
+
                 new Interaction("Сходить в столовку",
                     () => _dateTimeInfo.Hour >= 8 && _dateTimeInfo.Hour <= 18,
                     () =>
@@ -36,8 +51,8 @@ namespace Assets.Scripts.PlaceInteraction
                         _player.Money -= 500;
                         _player.Hunger += 20;
                     },
-                    "Поел, попил и теперь доволен"),
 
+                    "Поел, попил и теперь доволен"),
                 new Interaction("[ДЕБАГ] Скипнуть 6 часов",
                     () => true,
                     () => _dateTimeInfo.Hour +=6,
