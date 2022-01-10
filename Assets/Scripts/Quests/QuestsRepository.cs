@@ -26,6 +26,7 @@ namespace Assets.Scripts.Quests
                     "Нужно отнести бумагулю в уник",
                     QuestIds.PaperCourier,
                     2,
+                    0,
                   //  () => StateBus.QuestCompleted == QuestChainIds.Test1,
                     () => _playerStats.Mood += 20),
 
@@ -34,6 +35,7 @@ namespace Assets.Scripts.Quests
                     "Нужно помочь бабульке на улице",
                     QuestIds.HelpBabka,
                     2,
+                    0,
                    // () => StateBus.QuestCompleted == QuestChainIds.Test2,
                     () => _playerStats.Health += 30)
             });
@@ -45,18 +47,21 @@ namespace Assets.Scripts.Quests
                     "fas",
                     QuestIds.AskAboba,
                     2,
+                    0,
                     () => _playerStats.Mood -= 10),
                 new Quest(
                     "Дуй ка в студсовет выпрашивать подачки для абобы",
                     "SD",
                     QuestIds.TellStudPermission,
                     2,
+                    0,
                     () => _playerStats.Mood -= 10),
                 new Quest(
                     "Обратно к абобе, срочно",
                     "SD",
                     QuestIds.ReturnToAboba,
                     2,
+                    0,
                     () => _playerStats.Mood += 30)
             });
             

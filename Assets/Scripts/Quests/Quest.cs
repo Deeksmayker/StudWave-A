@@ -16,11 +16,12 @@ namespace Assets.Scripts.Quests
             Failed
         }
 
-        public Quest(string name, string description, string id, int deadlineWeek = 0, Action effectOnGoalComplete = null)
+        public Quest(string name, string description, string id, int deadlineWeek = 0, int deadlineHour = -1, Action effectOnGoalComplete = null)
         {
             Name = name;
             Description = description;
             DeadlineWeek = deadlineWeek;
+            DeadlineHour = deadlineHour;
             Id = id;
             //Goal = goal;
             EffectOnGoalComplete = effectOnGoalComplete;
@@ -32,6 +33,7 @@ namespace Assets.Scripts.Quests
         public string Id { get; }
         public string Description { get; }
         public int DeadlineWeek { get; }
+        public int DeadlineHour { get; }
 
         //public Func<bool> Goal { get; }
         public Action EffectOnGoalComplete { get; }

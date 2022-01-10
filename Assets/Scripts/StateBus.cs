@@ -13,12 +13,17 @@ public static class StateBus
     public static bool IsInPlaceInteractions;
     public static string NextEvent = "Неизвестно";
     public static string NextEventRequirements = "Неизвестно";
+    public static List<string> ActiveCharacters = new List<string>();
 
     public static StateQueue<string> QuestCompleted;
     public static StateQueue<string> QuestChainCompleted;
     public static StateQueue<string> QuestChainTaken;
     public static StateQueue<string> QuestChainFailed;
     public static StateQueue<bool> DayCompleted;
+    public static StateQueue<bool> FoodIncreace;
+    public static StateQueue<bool> FoodDecreace;
+    public static StateQueue<int> MoneySpend;
+    public static StateQueue<int> TimeSkip;
 
     /*
     public static Transform PlayerTransform;

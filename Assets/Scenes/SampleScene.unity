@@ -147,6 +147,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &171997867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7602571876446347977, guid: 2cd862a12bbe39c41ae3625e674d8f3c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4448497882774866103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &171997869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171997867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c46cf5cbad6424ea86b880c68ff991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _foodIncreacePanel: {fileID: 2094913434}
 --- !u!114 &178794340 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6792157389479521463, guid: 01e497bc44cb55e4584bb69be1b2899c,
@@ -672,6 +691,12 @@ MonoBehaviour:
 --- !u!1 &2045029641 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6380691396470885394, guid: 01e497bc44cb55e4584bb69be1b2899c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6792157388721520070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2094913434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7467225678773729929, guid: 01e497bc44cb55e4584bb69be1b2899c,
     type: 3}
   m_PrefabInstance: {fileID: 6792157388721520070}
   m_PrefabAsset: {fileID: 0}
@@ -1244,6 +1269,11 @@ PrefabInstance:
       propertyPath: _intermediatePanel
       value: 
       objectReference: {fileID: 2146507011}
+    - target: {fileID: 7675473382737709305, guid: 2cd862a12bbe39c41ae3625e674d8f3c,
+        type: 3}
+      propertyPath: m_Name
+      value: placeFOODtrgger
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cd862a12bbe39c41ae3625e674d8f3c, type: 3}
 --- !u!1001 &4938249562466639181
@@ -1312,6 +1342,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ClickableObjects
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398168225222081969, guid: 417a7ca5eadd0e742a76f3be97c8707c,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u0432 \u043C\u0430\u0433\u0430\u0437\u0438\u043D 24/7"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 417a7ca5eadd0e742a76f3be97c8707c, type: 3}
@@ -1924,6 +1959,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -18.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524153850411447122, guid: 01e497bc44cb55e4584bb69be1b2899c,
+        type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5556166589187564151, guid: 01e497bc44cb55e4584bb69be1b2899c,
         type: 3}
@@ -2836,6 +2876,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 6792157389973436430, guid: 01e497bc44cb55e4584bb69be1b2899c,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 6792157389973436431, guid: 01e497bc44cb55e4584bb69be1b2899c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3095,6 +3140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467225678773729929, guid: 01e497bc44cb55e4584bb69be1b2899c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7519650609366778771, guid: 01e497bc44cb55e4584bb69be1b2899c,
         type: 3}

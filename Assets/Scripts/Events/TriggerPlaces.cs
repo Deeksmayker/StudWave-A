@@ -13,4 +13,7 @@ public static class TriggerPlaces
     {
         get => "STREET";
     }
+
+    public const string Food = "FOOD";
+    public const string Home = "HOME";
 }

@@ -92,6 +92,7 @@ public class EventsRepository : MonoBehaviour
                         () => true,
                         b =>
                         {
+                            StateBus.ActiveCharacters.Add(QuestCharacters.Aboba);
                             StateBus.QuestCompleted += QuestChainIds.Aboba;
                             _studCouncil.AddMembersCount();
                         })

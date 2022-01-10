@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 public static class MovementStudents
@@ -26,13 +24,7 @@ public class MoveStudent : MonoBehaviour
     bool flagStopping=true;
     bool classTime;
     int countStudent;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         ComparedPositionUni();
@@ -80,7 +72,6 @@ public class MoveStudent : MonoBehaviour
     void GotoHome()
     {
         students[countStudent].SetActive(true);
-        Debug.Log("home");
         arrayAgent[countStudent].SetDestination(homePoint.position);
         if (countStudent >= students.Length - 1)
         {
@@ -96,7 +87,6 @@ public class MoveStudent : MonoBehaviour
     void GotoUni()
     {
         students[countStudent].SetActive(true);
-        Debug.Log("uni");
         arrayAgent[countStudent].SetDestination(uniPoint.position);
         if (countStudent >= students.Length-1)
         {
