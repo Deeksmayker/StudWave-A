@@ -5,31 +5,26 @@ using UnityEngine.AI;
 public class MoveCar : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] Transform startPoint;
-    [SerializeField] Transform finalPoint;
     [SerializeField] Transform[] trafficStop;
     [SerializeField] Transform distanceCar;
     public GameObject distanceCarActive;
     public GameObject[] trafficActive;
-    private float progress;
-    private float distanceTraveled;
-    public float speed;
-    private void FixedUpdate()
+    public Drawpaths Mypath;
+    public float speed = 1;
+    public float maxDistance = .1f;
+    public IEnumerator<Transform> pointInPath;
+
+    private void Start()
+    {
+        pointInPath = Mypath.GetNextPathPoint();
+        pointInPath.MoveNext();
+        transform.position = pointInPath.Current.position;
+    }
+    private void Update()
     {
         if (gameObject.activeSelf)
         {
             TrafficCar();
-        }
-        ReturnToStartPoint();
-    }
-
-    private void ReturnToStartPoint()
-    {
-        if (transform.position == finalPoint.position)
-        {
-            progress -= distanceTraveled;
-            distanceTraveled = 0;
-            gameObject.SetActive(false);
         }
     }
 
@@ -78,9 +73,14 @@ public class MoveCar : MonoBehaviour
 
     private void CarMovement()
     {
-        transform.position = Vector3.Lerp(startPoint.position, finalPoint.position, progress);
-        progress += speed;
-        distanceTraveled += speed;
+        transform.position = Vector3.Lerp(transform.position, pointInPath.Current.position, Time.deltaTime * speed);
+
+        var distanceSqure = (transform.position - pointInPath.Current.position).sqrMagnitude;
+
+        if (distanceSqure <maxDistance*maxDistance)
+        {
+            pointInPath.MoveNext();
+        }
     }
 }   
 

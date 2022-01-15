@@ -80,7 +80,6 @@ public class MoveStudent : MonoBehaviour
     void GotoHome()
     {
         students[countStudent].SetActive(true);
-        Debug.Log("home");
         arrayAgent[countStudent].SetDestination(homePoint.position);
         if (countStudent >= students.Length - 1)
         {
@@ -96,7 +95,6 @@ public class MoveStudent : MonoBehaviour
     void GotoUni()
     {
         students[countStudent].SetActive(true);
-        Debug.Log("uni");
         arrayAgent[countStudent].SetDestination(uniPoint.position);
         if (countStudent >= students.Length-1)
         {

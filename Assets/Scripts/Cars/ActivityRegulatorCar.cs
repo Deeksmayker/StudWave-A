@@ -19,6 +19,7 @@ public class ActivityRegulatorCar : MonoBehaviour
         inputRegulator = false;
         for (int i = 0; i < carActive.Length; i++)
         {
+            Debug.Log("1");
             yield return new WaitForSeconds(3f);
             carActive[i].SetActive(true);
         }

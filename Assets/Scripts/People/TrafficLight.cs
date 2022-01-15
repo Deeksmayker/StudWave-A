@@ -6,9 +6,11 @@ public class TrafficLight : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject[] stopTrafficsPeople;
-    public GameObject[] stopTrafficsCar;
-    public float stopSecondsPeople;
-    public float stopSecondsCar;
+    public GameObject[] stopTrafficsCarX;
+    public GameObject[] stopTrafficsCarZ;
+    public float timeWalkPeople;
+    public float timeTrafficCarX;
+    public float timeTrafficCarZ;
     bool entranceTraffic=true;
     // Update is called once per frame
     void Update()
@@ -26,21 +28,40 @@ public class TrafficLight : MonoBehaviour
             stopTrafficsPeople[i].SetActive(true);
         }
         yield return new WaitForSeconds(5f);
-        for (int i = 0; i < stopTrafficsCar.Length; i++)
+
+        for (int i = 0; i < stopTrafficsCarX.Length; i++)
         {
-            stopTrafficsCar[i].SetActive(false);
+            stopTrafficsCarX[i].SetActive(false);
         }
-        yield return new WaitForSeconds(stopSecondsPeople);
-        for (int i = 0; i < stopTrafficsCar.Length; i++)
+
+        yield return new WaitForSeconds(timeTrafficCarX);
+
+        for (int i = 0; i < stopTrafficsCarX.Length; i++)
         {
-            stopTrafficsCar[i].SetActive(true);
+            stopTrafficsCarX[i].SetActive(true);
         }
+
         yield return new WaitForSeconds(5f);
+
+        for (int i = 0; i < stopTrafficsCarZ.Length; i++)
+        {
+            stopTrafficsCarZ[i].SetActive(false);
+        }
+
+        yield return new WaitForSeconds(timeTrafficCarZ);
+
+        for (int i = 0; i < stopTrafficsCarZ.Length; i++)
+        {
+            stopTrafficsCarZ[i].SetActive(true);
+        }
+
+        yield return new WaitForSeconds(5f);
+
         for (int i = 0; i < stopTrafficsPeople.Length; i++)
         {
             stopTrafficsPeople[i].SetActive(false);
         }
-        yield return new WaitForSeconds(stopSecondsCar);
+        yield return new WaitForSeconds(timeWalkPeople);
         entranceTraffic = true;
     }
 }
