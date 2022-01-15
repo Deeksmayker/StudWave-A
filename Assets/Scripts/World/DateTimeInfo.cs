@@ -88,7 +88,7 @@ public class DateTimeInfo : MonoBehaviour
         get => hour;
         set
         {
-            _player.Hunger -= (value - Hour) * 2;
+            _player.Hunger -= (value - Hour) * 5;
             if (value >= 24)
             {
                 value -= 24;

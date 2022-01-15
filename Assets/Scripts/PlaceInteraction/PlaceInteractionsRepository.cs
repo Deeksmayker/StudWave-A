@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Home;
 using Assets.Scripts.Quests;
 using UnityEngine;
 
@@ -79,7 +80,57 @@ namespace Assets.Scripts.PlaceInteraction
                     "Ну они согласны с условиями абобы, так что дуй к нему обратно, паря. Также тебе сказали что следующий большоу эвент будет........ Сбор пекусов. Надо бы подготовиться.")
             };
 
+            var FOODInteractions = new List<Interaction>()
+            {
+                new Interaction($"Купить еды (500)",
+                    () => true,
+                    () => {
+                        StateBus.FoodIncreace += true;
+                        StateBus.MoneySpend += 500;
+                    },
+                    "Ты купил чутка еды"
+                    )
+            };
+
+            var HOMEInteractions = new List<Interaction>()
+            {
+                new Interaction("Приготовить поесть",
+                () => HomeFood.FoodCount > 0,
+                () => StateBus.FoodDecreace += true,
+                "Приготовил поесть, хорошооо...."),
+                new Interaction("Заняться учебой (1 час)",
+                () => true,
+                () => {_player.KnowledgeXP += 1; StateBus.TimeSkip += 1; },
+                "Учеба это жизнь..."),
+                new Interaction("Спать 9 часов",
+                () => true,
+                () => StateBus.TimeSkip += 9,
+                "Постпал так поспал"),
+                new Interaction("Спать 8 часов",
+                () => true,
+                () => StateBus.TimeSkip += 8,
+                "Постпал так поспал"),
+                new Interaction("Спать 7 часов",
+                () => true,
+                () => StateBus.TimeSkip += 7,
+                "Постпал так поспал"),
+                new Interaction("Спать 6 часов",
+                () => true,
+                () => StateBus.TimeSkip += 6,
+                "Постпал так поспал"),
+                new Interaction("Спать 5 часов",
+                () => true,
+                () => StateBus.TimeSkip += 5,
+                "Постпал так поспал"),
+                new Interaction("Отдохнуть часок",
+                () => true,
+                () => StateBus.TimeSkip += 1,
+                "Постпал так поспал")
+            };
+
             _interactions.Add(TriggerPlaces.University, UNIInteractions);
+            _interactions.Add(TriggerPlaces.Food, FOODInteractions);
+            _interactions.Add(TriggerPlaces.Home, HOMEInteractions);
         }
     }
 }
